@@ -1,0 +1,16 @@
+# Maven
+target/
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+*.class
+
+# Логи
+*.log
+
+# Операционные системы
+.DS_Store
+Thumbs.db
