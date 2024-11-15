@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: telegram-bot-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+bot:
+  name: OnlineSchool
+  token: ${TELEGRAM_BOT_TOKEN}
+
+logging:
+  level:
+    org.springframework.kafka: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+    org.apache.kafka: DEBUG
+    root: DEBUG
+    ru.platonov: DEBUG
+
+services:
+  booking-service:
+    url: http://booking-service:8080/api/bookings
+    urlForShedule: http://booking-service:8080/shedules/tutor/
+  user-service:
+    urlForSubject: http://user-service:8080/api/users/subjects
+    urlForTutor: http://user-service:8080/api/users/

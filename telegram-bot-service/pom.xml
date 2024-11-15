@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ru.platonov</groupId>
 	<artifactId>telegram-bot-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>latest</version>
 	<name>telegram-bot-service</name>
 	<description>Telegram bot for client interaction, providing services such as booking management and notifications.</description>
 	<url/>
@@ -41,11 +41,62 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots-spring-boot-starter</artifactId>
+			<version>6.9.7.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+			<version>3.1.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots</artifactId>
+			<version>6.9.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka-test</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -53,6 +104,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<env>
+							<BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
+						</env>
+					</image>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

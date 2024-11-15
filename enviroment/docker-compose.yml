@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: user-service
+    ports:
+      - 5400:5432
+    networks:
+      - corpbot-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+    networks:
+      - corpbot-network
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181/
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    networks:
+      - corpbot-network
+
+  user-service:
+    image: user-service:latest
+    depends_on:
+      - postgres
+      - kafka
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/user-service
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    ports:
+      - 8080:8080
+    networks:
+      - corpbot-network
+
+  booking-service:
+    image: booking-service:latest
+    depends_on:
+      - postgres
+      - kafka
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/booking-service
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    ports:
+      - 8081:8080
+    networks:
+      - corpbot-network
+
+  telegram-bot:
+    image: telegram-bot-service:latest
+    depends_on:
+      - kafka
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      LANG: ru_RU.UTF-8
+      LANGUAGE: ru_RU:ru
+      LC_ALL: ru_RU.UTF-8
+      JAVA_TOOL_OPTIONS: "-Dfile.encoding=UTF-8"
+    ports:
+      - 8443:8443
+    networks:
+      - corpbot-network
+
+volumes:
+  postgres_data:
+
+networks:
+  corpbot-network:
+    driver: bridge
