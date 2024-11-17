@@ -181,28 +181,28 @@ docker-compose up
 - Откройте Telegram и найдите вашего бота.
 - Нажмите кнопку **Запустить** или введите команду `/start` в поле для сообщений.
 
-![img_1.png](photos to the readme file/img_1.png)
+![img_1.png](photos%20to%20the%20readme%20file/img_1.png)
 ---
 
 #### 2. Выбрать роль пользователя
 - После команды `/start`, бот предложит вам выбрать вашу роль. На данный момент доступна роль **пользователь**.
 - Нажмите на кнопку с соответствующей ролью.
 
-![img.png](photos to the readme file/img.png)
+![img.png](photos%20to%20the%20readme%20file/img.png)
 
 ---
 
 #### 3. Зарегистрироваться
 - Если вы новый пользователь, выберите **Регистрация**.
 
-![img_2.png](photos to the readme file/img_2.png)
+![img_2.png](photos%20to%20the%20readme%20file/img_2.png)
 
 - Введите следующие данные, когда бот запросит:
     - Имя и фамилия.
     - Электронная почта.
     - Пароль (должен соответствовать требованиям безопасности).
 
-![img_3.png](photos to the readme file/img_3.png)
+![img_3.png](photos%20to%20the%20readme%20file/img_3.png)
 
 - Бот выполнит валидацию данных и сообщит, если найдены ошибки (например, неверный формат электронной почты или слишком простой пароль).
 
@@ -215,7 +215,7 @@ docker-compose up
 - Введите свою электронную почту и пароль.
 - Бот проверит введенные данные и сообщит, если они неверны.
 
-![img_4.png](photos to the readme file/img_4.png)
+![img_4.png](photos%20to%20the%20readme%20file/img_4.png)
 
 ---
 
@@ -226,25 +226,25 @@ docker-compose up
     - Выберите кнопку **Бронировать занятие**.
     - Укажите предмет, выберите преподавателя и подходящее время.
 
-![img_5.png](photos to the readme file/img_5.png)
+![img_5.png](photos%20to%20the%20readme%20file/img_5.png)
 
-![img_6.png](photos to the readme file/img_6.png)
+![img_6.png](photos%20to%20the%20readme%20file/img_6.png)
 
-![img_7.png](photos to the readme file/img_7.png)
+![img_7.png](photos%20to%20the%20readme%20file/img_7.png)
 
 2. **Просмотреть забронированные занятия**:
     - Нажмите на кнопку **Посмотреть занятия**.
     - Бот отобразит ваш список занятий.
 
-![img_8.png](photos to the readme file/img_8.png)
+![img_8.png](photos%20to%20the%20readme%20file/img_8.png)
 
 3. **Отменить занятие**:
     - Нажмите кнопку **Отменить занятие**.
     - Выберите занятие, которое нужно отменить, из предложенного списка.
 
-![img_9.png](photos to the readme file/img_9.png)
+![img_9.png](photos%20to%20the%20readme%20file/img_9.png)
 
-![img_10.png](photos to the readme file/img_10.png)
+![img_10.png](photos%20to%20the%20readme%20file/img_10.png)
 
 ---
 
