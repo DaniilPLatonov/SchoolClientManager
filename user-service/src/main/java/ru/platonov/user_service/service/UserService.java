@@ -101,7 +101,5 @@ public class UserService {
 
         return new LoginResponseDTO(true, "Успешный вход", user.getId().toString());
     }
-
-
 }
 

@@ -1,6 +1,5 @@
 package ru.platonov.user_service.controller;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,6 @@ import ru.platonov.user_service.service.UserService;
 import java.util.List;
 import java.util.UUID;
 
-import static org.apache.kafka.streams.kstream.EmitStrategy.log;
 
 @RestController
 @RequestMapping("/api/users")
